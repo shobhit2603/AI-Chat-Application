@@ -6,6 +6,7 @@ import passport from 'passport';
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import config from './config/config.js';
 import authRouter from './routes/auth.routes.js';
+import chatRouter from './routes/chat.routes.js';
 
 const app = express();
 
@@ -28,6 +29,11 @@ passport.use(
     ),
 );
 
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "ok" });
+});
+
 app.use("/api/auth", authRouter);
+app.use("/api/chat", chatRouter);
 
 export default app;
