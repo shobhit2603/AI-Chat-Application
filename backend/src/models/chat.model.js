@@ -10,6 +10,23 @@ const chatSchema = new mongoose.Schema({
     title: {
         type: String,
     },
+    messages: [
+        {
+            role: {
+                type: String,
+                enum: ["user", "ai"],
+                required: true,
+            },
+            content: {
+                type: String,
+                required: true,
+            },
+            timestamp: {
+                type: Date,
+                default: Date.now,
+            }
+        }
+    ],
     isDeleted: {
         type: Boolean,
         default: false,

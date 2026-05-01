@@ -19,11 +19,22 @@ export async function googleAuthCallback(req, res) {
         name: user.name,
     });
 
+    const isProduction = config.FRONTEND_URL?.startsWith("https");
+
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "strict",
+        secure: isProduction,
+        sameSite: isProduction ? "strict" : "lax",
     });
 
     res.redirect(config.FRONTEND_URL ? `${config.FRONTEND_URL}/` : "http://localhost:3000/");
+}
+
+export async function getCurrentUser(req, res) {
+    res.status(200).json({ user: { id: req.user.id, name: req.user.name } });
+}
+
+export async function logout(req, res) {
+    res.clearCookie("token");
+    res.status(200).json({ message: "Logged out successfully" });
 }

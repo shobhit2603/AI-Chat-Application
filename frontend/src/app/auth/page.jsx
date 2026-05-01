@@ -10,6 +10,7 @@ import {
 } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 import React from "react";
+import Image from "next/image";
 
 export default function Auth() {
   const handleGoogleLogin = () => {
@@ -50,13 +51,13 @@ export default function Auth() {
   return (
     <div className="min-h-screen w-full bg-[#0a0a0a] flex items-center justify-center p-4 lg:p-4 font-sans selection:bg-violet-600 selection:text-white">
       {/* Main Container Box */}
-      <div className="w-full max-w-[1400px] min-h-[50vh] flex flex-col lg:flex-row gap-3 relative">
+      <div className="w-full max-w-350 min-h-[50vh] flex flex-col lg:flex-row gap-3 relative">
         {/* Left Panel: Auth Form */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="w-full lg:w-1/2 bg-[#111111] rounded-3xl p-8 sm:p-12 lg:p-16 flex flex-col border-2 border-white/5 relative overflow-hidden group min-h-[300px]"
+          className="w-full lg:w-1/2 bg-[#111111] rounded-3xl p-8 sm:p-12 lg:p-16 flex flex-col border-2 border-white/5 relative overflow-hidden group min-h-75"
         >
           {/* Top Logo */}
           <div className="flex justify-center lg:justify-start w-full relative z-10 shrink-0">
@@ -105,7 +106,7 @@ export default function Auth() {
               <motion.button
                 whileTap={{ scale: 0.98 }}
                 onClick={handleGoogleLogin}
-                className="w-full flex items-center justify-center gap-3 bg-violet-600 text-white py-4 px-6 rounded-4xl font-medium text-[15px] transition-all duration-400 cursor-pointer hover:rounded-xl shadow-[0_0_20px_rgba(139,92,246,0.2)] hover:shadow-[0_0_30px_rgba(139,92,246,0.4)]"
+                className="w-full flex items-center justify-center gap-2 bg-violet-600 text-white py-4 px-6 rounded-4xl text-lg transition-all duration-400 cursor-pointer hover:rounded-xl shadow-[0_0_20px_rgba(139,92,246,0.2)] hover:shadow-[0_0_30px_rgba(139,92,246,0.4)]"
               >
                 <GoogleLogo size={22} weight="bold" />
                 <span>Continue with Google</span>
@@ -140,14 +141,15 @@ export default function Auth() {
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="hidden lg:grid grid-cols-3 grid-rows-3 gap-3 w-full lg:w-1/2 min-h-[700px] h-full"
+          className="hidden lg:grid grid-cols-3 grid-rows-3 gap-3 w-full lg:w-1/2 min-h-175 h-full"
         >
           {/* Top Left: Large Image */}
           <motion.div
             variants={scaleIn}
-            className="col-span-2 row-span-2 rounded-3xl overflow-hidden relative group"
+            className="col-span-2 row-span-2 rounded-3xl overflow-hidden relative group cursor-pointer"
           >
-            <img
+            <Image
+              fill
               src="https://images.unsplash.com/photo-1687618054649-9dd4b7d4eafe?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Abstract Violet Gradient"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
@@ -158,9 +160,10 @@ export default function Auth() {
           {/* Top Right: Small Image */}
           <motion.div
             variants={scaleIn}
-            className="col-span-1 row-span-1 rounded-3xl overflow-hidden relative group"
+            className="col-span-1 row-span-1 rounded-3xl overflow-hidden relative group cursor-pointer"
           >
-            <img
+            <Image
+              fill
               src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Violet Sphere"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
@@ -170,7 +173,7 @@ export default function Auth() {
           {/* Middle Right: Violet Feature Box */}
           <motion.div
             variants={scaleIn}
-            className="col-span-1 row-span-1 bg-violet-600 rounded-3xl p-6 lg:p-8 flex flex-col justify-between text-white relative overflow-hidden group"
+            className="col-span-1 row-span-1 bg-violet-600 rounded-3xl p-6 lg:p-8 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer"
           >
             <div className="relative z-10">
               <h3 className="text-xl lg:text-2xl font-medium leading-tight mb-2">
@@ -195,7 +198,7 @@ export default function Auth() {
           {/* Bottom Left: Dark Feature Box */}
           <motion.div
             variants={scaleIn}
-            className="col-span-1 row-span-1 bg-[#111111] rounded-3xl p-6 lg:p-8 flex flex-col justify-end relative overflow-hidden border border-white/5 group"
+            className="col-span-1 row-span-1 bg-[#111111] rounded-3xl p-6 lg:p-8 flex flex-col justify-end relative overflow-hidden border border-white/5 group cursor-pointer"
           >
             <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/3 flex items-center justify-center border border-white/5">
               <Lightning
@@ -215,9 +218,10 @@ export default function Auth() {
           {/* Bottom Middle: Small Image */}
           <motion.div
             variants={scaleIn}
-            className="col-span-1 row-span-1 rounded-3xl overflow-hidden relative group"
+            className="col-span-1 row-span-1 rounded-3xl overflow-hidden relative group cursor-pointer"
           >
-            <img
+            <Image
+              fill
               src="https://images.unsplash.com/photo-1740174459718-fdcc63ee3b4f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Violet 3D Render"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-500 grayscale hover:grayscale-0"

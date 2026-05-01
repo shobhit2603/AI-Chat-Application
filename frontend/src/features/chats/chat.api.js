@@ -2,7 +2,7 @@
 
 export async function getAiResponse({ message, chatId, onContent, onChat, onComplete }) {
 
-    const res = await fetch("/api/chats", {
+    const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -28,7 +28,7 @@ export async function getAiResponse({ message, chatId, onContent, onChat, onComp
             if (line.startsWith("title:")) {
                 const chat = JSON.parse(line.replace("title: ", ""))
                 onChat({
-                    id: chatId,
+                    id: chat.chatId,
                     title: chat.title,
                     messages: []
                 })
@@ -38,7 +38,46 @@ export async function getAiResponse({ message, chatId, onContent, onChat, onComp
     }
 
     onComplete()
+}
 
+export async function fetchChatHistory() {
+    const res = await fetch("/api/chat", {
+        method: "GET",
+        credentials: "include",
+    });
 
+    if (!res.ok) {
+        throw new Error("Failed to fetch chat history");
+    }
 
+    const data = await res.json();
+    return data.chats;
+}
+
+export async function fetchChatById(id) {
+    const res = await fetch(`/api/chat/${id}`, {
+        method: "GET",
+        credentials: "include",
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch chat");
+    }
+
+    const data = await res.json();
+    return data.chat;
+}
+
+export async function deleteChatById(id) {
+    const res = await fetch(`/api/chat/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to delete chat");
+    }
+
+    const data = await res.json();
+    return data;
 }

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import passport from 'passport';
-import { googleAuthCallback } from '../controllers/auth.controller.js';
+import { googleAuthCallback, getCurrentUser, logout } from '../controllers/auth.controller.js';
+import { authMiddleware } from '../middlewares/auth.middleware.js';
 
 const authRouter = Router();
 
@@ -19,6 +20,10 @@ authRouter.get("/google/callback", passport.authenticate('google',
     }),
     googleAuthCallback
 );
+
+authRouter.get("/me", authMiddleware, getCurrentUser);
+
+authRouter.post("/logout", authMiddleware, logout);
 
 
 export default authRouter;
