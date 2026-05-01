@@ -8,15 +8,15 @@ export async function googleAuthCallback(req, res) {
     let user = await userDao.findUserByEmail(userData.emails[0].value);
 
     if (!user) {
-        user = await userDao.createUser({
-            fullname: userData.displayName,
-            email: userData.emails[0].value,
-        });
+        user = await userDao.createUser(
+            userData.displayName,
+            userData.emails[0].value
+        );
     }
 
     const token = utils.generateJWT({
         id: user._id,
-        fullname: user.fullname,
+        name: user.name,
     });
 
     res.cookie("token", token, {
@@ -25,5 +25,5 @@ export async function googleAuthCallback(req, res) {
         sameSite: "strict",
     });
 
-    res.redirect(config.FRONTEND_URL || "http://localhost:3000");
+    res.redirect(config.FRONTEND_URL ? `${config.FRONTEND_URL}/` : "http://localhost:3000/");
 }

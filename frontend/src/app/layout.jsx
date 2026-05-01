@@ -5,7 +5,7 @@ import ReduxProvider from "@/store/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "ChatApp",
+  title: "Aura.ai - Gen AI Chat Application",
   description: "A simple chat application built with Next.js and Tailwind CSS.",
 };
 

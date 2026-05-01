@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 export const chatSlice = createSlice({
     name: "chat",
     initialState: {
@@ -47,7 +46,6 @@ export const chatSlice = createSlice({
         }
     }
 })
-
 
 export const { setChats,
     addChat,
