@@ -9,10 +9,27 @@ import {
   MountainsIcon,
 } from "@phosphor-icons/react";
 import { motion } from "motion/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
+const abstractImages = [
+  "https://images.unsplash.com/photo-1687618054649-9dd4b7d4eafe?q=80&w=880&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1489648022186-8f49310909a0?q=80&w=910&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1486551937199-baf066858de7?q=80&w=933&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=880&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+];
+
 export default function Auth() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % abstractImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
   const handleGoogleLogin = () => {
     // Connect to backend Google Auth route
     window.location.href = "http://localhost:5000/api/auth/google";
@@ -148,13 +165,18 @@ export default function Auth() {
             variants={scaleIn}
             className="col-span-2 row-span-2 rounded-3xl overflow-hidden relative group cursor-pointer"
           >
-            <Image
-              fill
-              src="https://images.unsplash.com/photo-1687618054649-9dd4b7d4eafe?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Abstract Violet Gradient"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {abstractImages.map((src, index) => (
+              <Image
+                key={src}
+                fill
+                src={src}
+                alt={`Abstract Image ${index + 1}`}
+                className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105 ${
+                  index === currentImageIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
+              />
+            ))}
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none" />
           </motion.div>
 
           {/* Top Right: Small Image */}
@@ -224,7 +246,7 @@ export default function Auth() {
               fill
               src="https://images.unsplash.com/photo-1740174459718-fdcc63ee3b4f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Violet 3D Render"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-500 grayscale hover:grayscale-0"
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-500 hover:grayscale"
             />
           </motion.div>
 
