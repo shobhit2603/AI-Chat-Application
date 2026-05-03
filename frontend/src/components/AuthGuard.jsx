@@ -31,7 +31,7 @@ export default function AuthGuard({ children }) {
     // Show loading state
     if (isLoading) {
         return (
-            <div className="min-h-screen w-full bg-[#0a0a0a] flex items-center justify-center">
+            <div className="min-h-screen w-full bg-background text-foreground flex items-center justify-center transition-colors duration-300">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -50,8 +50,8 @@ export default function AuthGuard({ children }) {
                         </motion.div>
                     </div>
                     <div className="flex flex-col items-center gap-2">
-                        <span className="text-white/80 text-lg tracking-tight">Aura.ai</span>
-                        <span className="text-white/30 text-xs tracking-wider uppercase">Loading</span>
+                        <span className="text-(--app-text) text-lg tracking-tight">Aura.ai</span>
+                        <span className="text-(--app-text-subtle) text-xs tracking-wider uppercase">Loading</span>
                     </div>
                 </motion.div>
             </div>

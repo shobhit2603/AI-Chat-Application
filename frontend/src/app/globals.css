@@ -1,8 +1,37 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
+  --background: #f5f7fb;
+  --foreground: #171717;
+  --app-surface: #ffffff;
+  --app-surface-muted: #f0f2f7;
+  --app-panel: #ffffff;
+  --app-border: rgba(17, 24, 39, 0.09);
+  --app-border-strong: rgba(17, 24, 39, 0.14);
+  --app-text: rgba(17, 24, 39, 0.88);
+  --app-text-muted: rgba(17, 24, 39, 0.55);
+  --app-text-subtle: rgba(17, 24, 39, 0.34);
+  --app-hover: rgba(17, 24, 39, 0.05);
+  --app-popover-shadow: 0 -8px 32px rgba(17, 24, 39, 0.14);
+  --app-input-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1), 0 8px 30px rgba(17, 24, 39, 0.08);
+}
+
+:root.dark {
+  color-scheme: dark;
   --background: #0a0a0a;
   --foreground: #ededed;
+  --app-surface: #111111;
+  --app-surface-muted: #161616;
+  --app-panel: #1a1a1a;
+  --app-border: rgba(255, 255, 255, 0.06);
+  --app-border-strong: rgba(255, 255, 255, 0.1);
+  --app-text: rgba(255, 255, 255, 0.86);
+  --app-text-muted: rgba(255, 255, 255, 0.56);
+  --app-text-subtle: rgba(255, 255, 255, 0.3);
+  --app-hover: rgba(255, 255, 255, 0.05);
+  --app-popover-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+  --app-input-shadow: 0 0 0 3px rgba(139, 92, 246, 0.08), 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
 @theme inline {
@@ -18,7 +47,7 @@ body {
 /* ── Global Scrollbar ── */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+  scrollbar-color: var(--app-border-strong) transparent;
 }
 
 *::-webkit-scrollbar {
@@ -30,12 +59,12 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--app-border-strong);
   border-radius: 4px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--app-text-subtle);
 }
 
 /* ── Selection ── */

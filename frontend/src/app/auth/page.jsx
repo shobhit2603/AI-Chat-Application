@@ -66,7 +66,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#0a0a0a] flex items-center justify-center p-4 lg:p-4 font-sans selection:bg-violet-600 selection:text-white">
+    <div className="min-h-screen w-full bg-background text-foreground flex items-center justify-center p-4 lg:p-4 font-sans selection:bg-violet-600 selection:text-white transition-colors duration-300">
       {/* Main Container Box */}
       <div className="w-full max-w-350 min-h-[50vh] flex flex-col lg:flex-row gap-3 relative">
         {/* Left Panel: Auth Form */}
@@ -74,7 +74,7 @@ export default function Auth() {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="w-full lg:w-1/2 bg-[#111111] rounded-3xl p-8 sm:p-12 lg:p-16 flex flex-col border-2 border-white/5 relative overflow-hidden group min-h-75"
+          className="w-full lg:w-1/2 bg-(--app-surface) rounded-3xl p-8 sm:p-12 lg:p-16 flex flex-col border-2 border-(--app-border) relative overflow-hidden group min-h-75"
         >
           {/* Top Logo */}
           <div className="flex justify-center lg:justify-start w-full relative z-10 shrink-0">
@@ -82,7 +82,7 @@ export default function Auth() {
               <div className="w-8 h-8 rounded-full bg-violet-600 flex items-center justify-center text-white">
                 <MountainsIcon size={18} weight="fill" />
               </div>
-              <span className="text-white text-2xl tracking-tight">
+              <span className="text-(--app-text) text-2xl tracking-tight">
                 Aura.ai
               </span>
             </div>
@@ -97,24 +97,24 @@ export default function Auth() {
           >
             <motion.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-3xl bg-white/3 border border-white/8 mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-3xl bg-(--app-surface-muted) border border-(--app-border-strong) mb-8"
             >
               <Sparkle size={14} className="text-violet-600" />
-              <span className="text-[10px] font-medium text-white/70 uppercase tracking-widest">
+              <span className="text-[10px] font-medium text-(--app-text-muted) uppercase tracking-widest">
                 Chat, learn, and explore
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className="text-4xl lg:text-5xl tracking-tight text-white mb-4 leading-tight"
+              className="text-4xl lg:text-5xl tracking-tight text-(--app-text) mb-4 leading-tight"
             >
               Sign in to
               <br />
               account
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="text-white/40 text-sm mb-12">
+            <motion.p variants={fadeUp} className="text-(--app-text-muted) text-sm mb-12">
               Sign in to securely access your AI assistant and start exploring
               new ideas.
             </motion.p>
@@ -134,16 +134,16 @@ export default function Auth() {
               variants={fadeUp}
               className="w-full mt-8 flex items-center justify-center gap-4"
             >
-              <div className="h-px bg-white/10 flex-1" />
-              <span className="text-white/30 text-xs uppercase tracking-wider font-medium">
+              <div className="h-px bg-(--app-border-strong) flex-1" />
+              <span className="text-(--app-text-subtle) text-xs uppercase tracking-wider font-medium">
                 Or
               </span>
-              <div className="h-px bg-white/10 flex-1" />
+              <div className="h-px bg-(--app-border-strong) flex-1" />
             </motion.div>
 
             <motion.p
               variants={fadeUp}
-              className="text-center w-full mt-8 text-white/40 text-sm"
+              className="text-center w-full mt-8 text-(--app-text-muted) text-sm"
             >
               Secured by advanced encryption.
             </motion.p>
@@ -220,19 +220,19 @@ export default function Auth() {
           {/* Bottom Left: Dark Feature Box */}
           <motion.div
             variants={scaleIn}
-            className="col-span-1 row-span-1 bg-[#111111] rounded-3xl p-6 lg:p-8 flex flex-col justify-end relative overflow-hidden border border-white/5 group cursor-pointer"
+            className="col-span-1 row-span-1 bg-(--app-surface) rounded-3xl p-6 lg:p-8 flex flex-col justify-end relative overflow-hidden border border-(--app-border) group cursor-pointer"
           >
-            <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/3 flex items-center justify-center border border-white/5">
+            <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-(--app-surface-muted) flex items-center justify-center border border-(--app-border)">
               <Lightning
                 size={20}
                 className="text-violet-600 group-hover:scale-125 transition-transform"
                 weight="fill"
               />
             </div>
-            <h3 className="text-white text-lg font-medium mb-1 relative z-10">
+            <h3 className="text-(--app-text) text-lg font-medium mb-1 relative z-10">
               Instant Answers
             </h3>
-            <p className="text-white/40 text-xs relative z-10">
+            <p className="text-(--app-text-muted) text-xs relative z-10">
               Get accurate, real-time responses to your questions instantly.
             </p>
           </motion.div>

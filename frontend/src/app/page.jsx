@@ -64,7 +64,7 @@ export default function Home() {
     });
 
     return (
-        <div className="flex w-full h-screen bg-[#0a0a0a] overflow-hidden">
+        <div className="flex w-full h-screen bg-background text-foreground overflow-hidden transition-colors duration-300">
             <Sidebar />
             <main className="flex-1 flex flex-col h-screen relative overflow-hidden">
                 {showEmptyState ? (
@@ -86,7 +86,7 @@ export default function Home() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="text-[22px] font-medium text-white/85 tracking-tight"
+                            className="text-[22px] font-medium text-(--app-text) tracking-tight"
                         >
                             What can I help you with?
                         </motion.h2>
@@ -94,7 +94,7 @@ export default function Home() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
-                            className="text-sm text-white/30 max-w-[320px] text-center leading-relaxed"
+                            className="text-sm text-(--app-text-subtle) max-w-[320px] text-center leading-relaxed"
                         >
                             Start a conversation with Aura — ask anything, explore ideas, or get instant help.
                         </motion.p>
@@ -113,7 +113,7 @@ export default function Home() {
                                     >
                                         <div className={`flex flex-col max-w-[80%] ${msg.role === "user" ? "items-end" : "items-start"}`}>
                                             <div className={`flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wider mb-1 px-1 ${
-                                                msg.role === "user" ? "text-violet-500 flex-row-reverse" : "text-white/40"
+                                                msg.role === "user" ? "text-violet-500 flex-row-reverse" : "text-(--app-text-subtle)"
                                             }`}>
                                                 <span>{msg.role === "user" ? "You" : "Aura"}</span>
                                                 {msg.timestamp && (
@@ -123,7 +123,7 @@ export default function Home() {
                                                 )}
                                             </div>
                                             {msg.role === "ai" && msg.content === "" && isStreaming ? (
-                                                <div className="flex items-center gap-1.25 py-3.5 px-5 bg-[#161616] rounded-tl-[20px] rounded-tr-[20px] rounded-br-[20px] rounded-bl-md border border-white/5 w-fit shrink-0">
+                                                <div className="flex items-center gap-1.25 py-3.5 px-5 bg-(--app-surface-muted) rounded-tl-[20px] rounded-tr-[20px] rounded-br-[20px] rounded-bl-md border border-(--app-border) w-fit shrink-0">
                                                     <motion.div className="w-1.5 h-1.5 rounded-full bg-violet-600/60" animate={dotBounce(0)} />
                                                     <motion.div className="w-1.5 h-1.5 rounded-full bg-violet-600/60" animate={dotBounce(0.15)} />
                                                     <motion.div className="w-1.5 h-1.5 rounded-full bg-violet-600/60" animate={dotBounce(0.3)} />
@@ -132,7 +132,7 @@ export default function Home() {
                                                 <div className={`px-4.5 py-3 text-sm leading-relaxed tracking-[0.01em] wrap-break-word whitespace-pre-wrap inline-block ${
                                                     msg.role === "user"
                                                         ? "bg-violet-600 text-white rounded-tl-[20px] rounded-tr-[20px] rounded-br-md rounded-bl-[20px] shadow-[0_2px_16px_rgba(139,92,246,0.2)] text-left"
-                                                        : "bg-[#161616] text-white/85 rounded-tl-[20px] rounded-tr-[20px] rounded-br-[20px] rounded-bl-md border border-white/5 text-left"
+                                                        : "bg-(--app-surface-muted) text-(--app-text) rounded-tl-[20px] rounded-tr-[20px] rounded-br-[20px] rounded-bl-md border border-(--app-border) text-left"
                                                 }`}>
                                                     {msg.content}
                                                 </div>
@@ -148,7 +148,7 @@ export default function Home() {
 
                 {/* Input Bar */}
                 <div className="shrink-0 px-6 pb-6 pt-3 flex justify-center">
-                    <div className="max-w-180 w-full flex items-end gap-2.5 bg-[#141414] border border-white/6 rounded-[20px] pl-5 pr-1.5 py-1.5 transition-all duration-300 backdrop-blur-xl focus-within:border-violet-600/30 focus-within:shadow-[0_0_0_3px_rgba(139,92,246,0.08),0_4px_24px_rgba(0,0,0,0.3)]">
+                    <div className="max-w-180 w-full flex items-end gap-2.5 bg-(--app-panel) border border-(--app-border-strong) rounded-[20px] pl-5 pr-1.5 py-1.5 transition-all duration-300 backdrop-blur-xl focus-within:border-violet-600/30 focus-within:shadow-(--app-input-shadow)">
                         <textarea
                             ref={textareaRef}
                             value={message}
@@ -156,7 +156,7 @@ export default function Home() {
                             onKeyDown={handleKeyDown}
                             placeholder="Message Aura..."
                             rows={1}
-                            className="flex-1 bg-transparent border-none outline-none text-white/85 text-sm leading-relaxed resize-none min-h-6 max-h-37.5 py-2 font-[inherit] placeholder:text-white/20"
+                            className="flex-1 bg-transparent border-none outline-none text-(--app-text) text-sm leading-relaxed resize-none min-h-6 max-h-37.5 py-2 font-[inherit] placeholder:text-(--app-text-subtle)"
                         />
                         <motion.button
                             whileHover={{ scale: 1.05 }}
