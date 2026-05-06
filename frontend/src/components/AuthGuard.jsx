@@ -15,7 +15,7 @@ export default function AuthGuard({ children }) {
 
     useEffect(() => {
         checkAuth();
-    }, []);
+    }, [checkAuth]);
 
     useEffect(() => {
         if (!isLoading) {
@@ -26,7 +26,7 @@ export default function AuthGuard({ children }) {
                 router.push("/");
             }
         }
-    }, [isAuthenticated, isLoading, pathname]);
+    }, [isAuthenticated, isLoading, pathname, router]);
 
     // Show loading state
     if (isLoading) {

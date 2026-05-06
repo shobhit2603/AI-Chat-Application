@@ -1,5 +1,3 @@
-
-
 export async function getAiResponse({ message, chatId, onContent, onChat, onComplete }) {
 
     const res = await fetch("/api/chat", {
