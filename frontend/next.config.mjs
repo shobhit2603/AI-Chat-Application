@@ -11,7 +11,7 @@ const nextConfig = {
     ],
   },
 
-  async rewrites() { 
+  async rewrites() {
     return [
       {
         source: "/api/:path*",
